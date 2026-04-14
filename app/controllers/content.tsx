@@ -17,4 +17,4 @@ export const contentAction = {
       </main>,
     );
   },
-} satisfies BuildAction<"GET", typeof routes.home>;
+} satisfies BuildAction<"GET", typeof routes.content>;

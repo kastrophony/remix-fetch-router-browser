@@ -19,4 +19,4 @@ export const moreAction = {
       </main>,
     );
   },
-} satisfies BuildAction<"GET", typeof routes.about>;
+} satisfies BuildAction<"GET", typeof routes.more>;

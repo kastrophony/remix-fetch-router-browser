@@ -1,11 +1,16 @@
 import { createRoot, Frame } from "remix/component";
 
+import { routes } from "./routes.ts";
+
 function App() {
   return () => (
     <div>
       <h1>Hello, World!</h1>
-      <Frame src="/home" fallback={<p>Loading...</p>} />
-      <Frame src="/about" fallback={<p>Loading after 2 seconds...</p>} />
+      <Frame src={routes.content.href()} fallback={<p>Loading...</p>} />
+      <Frame
+        src={routes.more.href()}
+        fallback={<p>Loading after 2 seconds...</p>}
+      />
     </div>
   );
 }
