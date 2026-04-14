@@ -1,0 +1,22 @@
+{
+  "tasks": {
+    "dev": "deno run build:entry --watch & deno run build:service-worker --watch",
+
+    "build:entry": "deno bundle --outdir=public/assets --minify --code-splitting --sourcemap --platform browser app/app.tsx",
+    "build:service-worker": "deno bundle --outdir=public --minify --code-splitting --sourcemap --platform browser app/service-worker.js",
+    "build": {
+      "dependencies": ["build:entry", "build:service-worker"]
+    }
+  },
+  "imports": {
+    "remix": "npm:remix@3.0.0-alpha.4"
+  },
+  "compilerOptions": {
+    "lib": ["ES2024", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
+    "module": "esnext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "remix/component"
+  },
+  "exclude": ["public"]
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remix v3 Browser Demo</title>
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js", {
+            type: "module",
+          })
+          .then((registration) => {
+            if (!navigator.serviceWorker.controller) {
+              // hack
+              navigator.serviceWorker.ready.then(() => {
+                window.location.reload();
+              });
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
